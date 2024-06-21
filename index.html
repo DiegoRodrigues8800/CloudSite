@@ -64,10 +64,43 @@
             height: auto;
             margin-top: 10px;
         }
+
+        .container {
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-start;
+        }
+
+        .person {
+            width: 45%;
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+
+        .person img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 10px;
+        }
     </style>
 </head>
 
 <body>
+    <div class="container">
+        <div class="person">
+            <img src="caminho-da-imagem1.jpg" alt="Foto Pessoa 1">
+            <h2>Diego Luiz Rodrigues dos Santos</h2>
+            <p>Email: diegoluizxx@gmail.com</p>
+            <p>Telefone: (46) 98812-8091</p>
+        </div>
+        <div class="person">
+            <img src="https://prnt.sc/e7nBIErmmwaM" alt="Foto Pessoa 2">
+            <h2>Paulo</h2>
+            <p>Email: paulo@email.com</p>
+            <p>Telefone: (21) 98765-1234</p>
+        </div>
+    </div>
     <form id="cadastroForm" onsubmit="return exibirDados()">
         <label for="nome">Nome:</label>
         <input type="text" id="nome" name="nome" required>
