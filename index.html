@@ -10,114 +10,107 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            margin: 20px;
+            background-color: #f8f9fa;
         }
 
-        form {
+        .form-container {
             max-width: 500px;
             margin: auto;
             padding: 20px;
-            border: 1px solid #ccc;
             border-radius: 5px;
-            background-color: #f9f9f9;
+            background-color: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
-        form label {
-            display: block;
-            margin-bottom: 10px;
-            font-weight: bold;
-        }
-
-        form input,
-        form textarea {
-            width: calc(100% - 20px);
-            padding: 10px;
-            margin-bottom: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            font-size: 1em;
-        }
-
-        form input[type="submit"] {
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-
-        .dados {
-            margin-top: 20px;
-            text-align: center;
-        }
-
-        .dados-container {
-            display: inline-block;
-            text-align: left;
-            padding: 20px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            background-color: #f2f2f2;
-        }
-
-        .dados img {
-            max-width: 100%;
-            height: auto;
-            margin-top: 10px;
-        }
-
-        .container {
-            display: flex;
-            justify-content: space-around;
-            align-items: flex-start;
+        .form-control:focus {
+            box-shadow: none;
         }
 
         .person {
-            width: 45%;
             border: 1px solid #ccc;
-            padding: 10px;
+            border-radius: 10px;
+            background-color: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             margin-bottom: 20px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
         }
 
         .person img {
-            max-width: 100%;
+            max-width: 150px;
             height: auto;
+            margin-right: 20px;
+            border-radius: 10px;
+        }
+
+        .person h2 {
+            font-size: 1.5em;
             margin-bottom: 10px;
+            color: #333;
+        }
+
+        .person p {
+            font-size: 1em;
+            margin-bottom: 5px;
+            color: #666;
+        }
+
+        .dados img {
+            max-width: 150px;
+            height: auto;
+            margin-right: 20px;
         }
     </style>
 </head>
 
 <body>
-    <div class="container">
-        <div class="person">
-            <img src="caminho-da-imagem1.jpg" alt="Foto Pessoa 1">
-            <h2>Diego Luiz Rodrigues dos Santos</h2>
-            <p>Email: diegoluizxx@gmail.com</p>
-            <p>Telefone: (46) 98812-8091</p>
-        </div>
-        <div class="person">
-            <img src="https://prnt.sc/e7nBIErmmwaM" alt="Foto Pessoa 2">
-            <h2>Paulo</h2>
-            <p>Email: paulo@email.com</p>
-            <p>Telefone: (21) 98765-1234</p>
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="person">
+                    <img src="caminho-da-imagem1.jpg" alt="Foto Pessoa 1">
+                    <div>
+                        <h2>Diego Luiz Rodrigues dos Santos</h2>
+                        <p>Email: diegoluizxx@gmail.com</p>
+                        <p>Telefone: (46) 98812-8091</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="person">
+                    <img src="https://prnt.sc/e7nBIErmmwaM" alt="Foto Pessoa 2">
+                    <div>
+                        <h2>Paulo</h2>
+                        <p>Email: paulo@email.com</p>
+                        <p>Telefone: (21) 98765-1234</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    <form id="cadastroForm" onsubmit="return exibirDados()">
-        <label for="nome">Nome:</label>
-        <input type="text" id="nome" name="nome" required>
-
-        <label for="email">E-mail:</label>
-        <input type="email" id="email" name="email" required>
-
-        <label for="telefone">Telefone:</label>
-        <input type="tel" id="telefone" name="telefone" required>
-
-        <label for="imagem">Link da Imagem:</label>
-        <input type="url" id="imagem" name="imagem" required>
-
-        <input type="submit" value="Cadastrar">
-    </form>
-
-    <div id="dadosPreenchidos" class="dados"></div>
+    <div id="dadosPreenchidos" class="container mt-4"></div>
+    <div class="container mt-4">
+        <form id="cadastroForm" class="form-container" onsubmit="return exibirDados()">
+            <div class="mb-3">
+                <label for="nome" class="form-label">Nome:</label>
+                <input type="text" id="nome" name="nome" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">E-mail:</label>
+                <input type="email" id="email" name="email" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label for="telefone" class="form-label">Telefone:</label>
+                <input type="tel" id="telefone" name="telefone" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label for="imagem" class="form-label">Link da Imagem:</label>
+                <input type="url" id="imagem" name="imagem" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Cadastrar</button>
+        </form>
+    </div>
 
     <script>
         function exibirDados() {
@@ -129,14 +122,18 @@
 
             var dadosDiv = document.getElementById('dadosPreenchidos');
             var html = `
-                <h2>Dados Cadastrados:</h2>
-                <p><strong>Nome:</strong> ${nome}</p>
-                <p><strong>E-mail:</strong> ${email}</p>
-                <p><strong>Telefone:</strong> ${telefone}</p>
-                <p><strong>Imagem:</strong></p>
-                <img src="${imagem}" alt="Imagem cadastrada">
+                <div class="person row">
+                    <div class="col-md-4">
+                        <img src="${imagem}" alt="Imagem cadastrada" class="img-fluid">
+                    </div>
+                    <div class="col-md-8">
+                        <h2>${nome}</h2>
+                        <p><strong>E-mail:</strong> ${email}</p>
+                        <p><strong>Telefone:</strong> ${telefone}</p>
+                    </div>
+                </div>
             `;
-            dadosDiv.innerHTML = html;
+            dadosDiv.innerHTML += html;
             form.reset();
             return false;
         }
